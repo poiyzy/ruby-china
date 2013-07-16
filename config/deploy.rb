@@ -71,7 +71,7 @@ task :link_shared_files, :roles => :app do
   run "ln -sf #{deploy_to}/shared/config/unicorn.rb #{deploy_to}/current/config/"
   run "ln -sf #{deploy_to}/shared/config/initializers/secret_token.rb #{deploy_to}/current/config/initializers"
   run "ln -sf #{deploy_to}/shared/config/faye_thin.yml #{deploy_to}/current/faye_server/thin.yml"
-  sudo "ln -nfs #{deploy_to}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+  sudo "ln -nfs #{deploy_to}/current/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
 end
 
 task :mongoid_create_indexes, :roles => :app do
