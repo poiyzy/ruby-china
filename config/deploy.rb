@@ -1,7 +1,6 @@
 # coding: utf-8
 require "bundler/capistrano"
 require "sidekiq/capistrano"
-require "rvm/capistrano"
 
 default_run_options[:pty] = true
 
@@ -15,9 +14,9 @@ if ENV["DEPLOY"] == "pre"
 else
   set :deploy_to, "/home/#{user}/apps/#{application}"
 end
-ser :deploy_via, :remote_cache
+set :deploy_via, :remote_cache
 set :runner, "poiyzy"
-set :user_sudo, false
+set :use_sudo, false
 # set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
 
@@ -72,6 +71,7 @@ task :link_shared_files, :roles => :web do
   run "ln -sf #{deploy_to}/shared/config/unicorn.rb #{deploy_to}/current/config/"
   run "ln -sf #{deploy_to}/shared/config/initializers/secret_token.rb #{deploy_to}/current/config/initializers"
   run "ln -sf #{deploy_to}/shared/config/faye_thin.yml #{deploy_to}/current/faye_server/thin.yml"
+  run "ln -nfs #{deploy_to}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
 end
 
 task :mongoid_create_indexes, :roles => :web do
