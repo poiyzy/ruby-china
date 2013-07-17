@@ -82,13 +82,13 @@ task :compile_assets, :roles => :app do
   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec rake assets:precompile"
 end
 
-# task :sync_assets_to_cdn, :roles => :web do
-#   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec rake assets:cdn"
-# end
+task :sync_assets_to_cdn, :roles => :web do
+  run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec rake assets:cdn"
+end
 
 task :mongoid_migrate_database, :roles => :app do
   run "cd #{deploy_to}/current/; RAILS_ENV=production bundle exec rake db:migrate"
 end
 
-# after "deploy:finalize_update","deploy:symlink", :init_shared_path, :link_shared_files, :compile_assets, :sync_assets_to_cdn, :mongoid_migrate_database
-after "deploy:finalize_update","deploy:symlink", :init_shared_path, :link_shared_files, :compile_assets, :mongoid_migrate_database
+after "deploy:finalize_update","deploy:symlink", :init_shared_path, :link_shared_files, :compile_assets, :sync_assets_to_cdn, :mongoid_migrate_database
+# after "deploy:finalize_update","deploy:symlink", :init_shared_path, :link_shared_files, :compile_assets, :mongoid_migrate_database
