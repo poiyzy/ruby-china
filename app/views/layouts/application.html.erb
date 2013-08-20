@@ -41,12 +41,12 @@
     <div class="navbar-inner">
       <div class="container">
         <h3>
-          <a href="/" class="site-logo"></a>
+          <%# <a href="/"><%= image_tag("text_logo.png", :style => "width:123px;height:29px;") %1></a> %>
+          <a href="/">自然男人</a>
         </h3>
         <%= render_list :class => "nav" do |li|
            li << link_to(t("menu.topics"), topics_path)
            li << link_to(t("menu.wiki"), pages_path )
-           li << link_to(t("menu.sites"), sites_path ) if !mobile?
            li << link_to(t("menu.users"), users_path) if !mobile?
         end %>
         <form action="/search" class="navbar-search pull-left" method="get">

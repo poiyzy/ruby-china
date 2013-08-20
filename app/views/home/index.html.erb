@@ -9,7 +9,4 @@
     <%= link_to "查看更多精华贴...", excellent_topics_path %>
   </div>
 </div>
-<% if !mobile? %>
-  <%= render_cell :topics, :index_sections %>
-  <%= render_cell :topics, :index_locations %>
-<% end %>
+<%= render_cell :topics, :index_sections %>
