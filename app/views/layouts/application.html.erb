@@ -49,9 +49,9 @@
            li << link_to(t("menu.wiki"), pages_path )
            li << link_to(t("menu.users"), users_path) if !mobile?
         end %>
-        <form action="/search" class="navbar-search pull-left" method="get">
-          <input type="text" name="q" class="search-query span3" value="<%= params[:q] %>" placeholder="<%= t("common.search") %>" />
-        </form>
+        <%# <form action="/search" class="navbar-search pull-left" method="get"> %>
+        <%#   <input type="text" name="q" class="search-query span3" value="<%= params[:q] %1>" placeholder="<%= t("common.search") %1>" /> %>
+        <%# </form> %>
         <%= render "common/user_nav" %>
       </div>
     </div>
