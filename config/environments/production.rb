@@ -37,9 +37,18 @@ RubyChina::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => Setting.domain }
-  config.action_mailer.delivery_method   = :postmark
-  config.action_mailer.postmark_settings = { :api_key => Setting.email_password }
+  config.action_mailer.default_url_options = { :host => "community.zirannanren.com" }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: "smtp.mailgun.org",
+    user_name: "postmaster@zirannanren.com.mailgun.org",
+    password: "477pgjluukf6",
+    domain: "zirannanren.mailgun.org",
+    authentication: :plain
+  }
 
   # Enable threaded mode
   # config.threadsafe!
