@@ -48,6 +48,7 @@
            li << link_to(t("menu.topics"), topics_path)
            li << link_to(t("menu.wiki"), pages_path )
            li << link_to(t("menu.users"), users_path) if !mobile?
+           li << link_to(t("menu.main_site"), "http://zirannanren.com")
         end %>
         <%# <form action="/search" class="navbar-search pull-left" method="get"> %>
         <%#   <input type="text" name="q" class="search-query span3" value="<%= params[:q] %1>" placeholder="<%= t("common.search") %1>" /> %>
