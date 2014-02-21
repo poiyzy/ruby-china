@@ -18,7 +18,8 @@ RubyChina::Application.routes.draw do
       post :preview
     end
   end
-  root :to => "home#index"
+  # root :to => "home#index"
+  root :to => "topics#index"
 
   devise_for :users, :path => "account", :controllers => {
       :registrations => :account,
