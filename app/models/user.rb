@@ -73,7 +73,7 @@ class User
     CSV.generate(options) do |csv|
       csv << ["Name", "Email"]
       User.each do |user|
-        csv << user.attributes.values_at(["name", "email"])
+        csv << user.attributes.values_at("name", "email")
       end
     end
   end
