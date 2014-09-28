@@ -93,6 +93,8 @@ RubyChina::Application.routes.draw do
     resources :locations
   end
 
+  resources :export_users, only: [:index]
+
   get "api" => "home#api", as: 'api'
   mount RubyChina::API => "/"
   mount RubyChina::APIV2 => "/"
