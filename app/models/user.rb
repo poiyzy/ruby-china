@@ -69,6 +69,15 @@ class User
   has_many :notifications, :class_name => 'Notification::Base', :dependent => :delete
   has_many :photos
 
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ["Name", "Email"]
+      User.each do |user|
+        csv << user.attributes.values_at(*column_names)
+      end
+    end
+  end
+
   def read_notifications(notifications)
     unread_ids = notifications.find_all{|notification| !notification.read?}.map(&:_id)
     if unread_ids.any?
